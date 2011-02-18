@@ -44,12 +44,10 @@ class AnswersController < ApplicationController
   def index
     @questions = Question.all
     @projects = Project.all
-    if(params['answer']['project_id'])
+    if !params['answer'].nil?
       @answers = Answer.select("questions.question, answers.*").joins("join questions on questions.id = answers.question_id").where(:project_id => params['answer']['project_id']).order("answers.question_id")
     end
     @answer = Answer.new()
-    
-    puts @answers.inspect
 
     respond_to do |format|
       format.html # index.html.erb
