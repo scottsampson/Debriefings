@@ -29,7 +29,7 @@ role :app, "oops.cloudspace.com"
 role :db, "oops.cloudspace.com", :primary => true
 
 task :chmod_all do
-  run "chmod -R 777 #{current_path}/public"
+  run "chmod -R 777 #{current_path}"
 end
 
 namespace :deploy do
